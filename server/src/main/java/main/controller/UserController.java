@@ -1,7 +1,7 @@
-package controller;
+package main.controller;
 
-import model.User;
-import repository.UserRepository;
+import main.model.User;
+import main.repository.UserRepository;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("/login")
+    @PostMapping("/register")
     public ResponseEntity<User> addUser(@RequestBody User user) {
         User userObject = userRepository.save(user);
         return new ResponseEntity<>(userObject, HttpStatus.CREATED);

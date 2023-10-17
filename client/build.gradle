@@ -2,9 +2,6 @@ plugins {
     id 'java'
 }
 
-group = 'edu.laplateforme'
-version = '1.0-SNAPSHOT'
-
 repositories {
     mavenCentral()
 }
@@ -16,4 +13,13 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ClientApp'
+    }
+    from sourceSets.main.output
+    archiveBaseName = 'galactic_messenger_client'
+    destinationDirectory = file("$rootDir/")
 }

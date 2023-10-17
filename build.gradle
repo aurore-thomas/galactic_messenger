@@ -15,21 +15,13 @@ test {
     useJUnitPlatform()
 }
 
-jar {
-    manifest {
-        attributes 'Main-Class': 'ServerApp'
-    }
-    from sourceSets.main.output
-    archiveBaseName = 'galactic_messenger_server'
-
-}
-
 tasks.register('clientJar', Jar) {
     manifest {
         attributes 'Main-Class': 'ClientApp'
     }
     from sourceSets.main.output
     archiveBaseName = 'galactic_messenger_client'
+    destinationDirectory = file("$rootDir/")
 }
 
 assemble.dependsOn(clientJar)
