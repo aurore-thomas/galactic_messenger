@@ -1,5 +1,7 @@
 .gradle
 build/
+/server/src/main/java/resources/galactic_messenger.mv.db
+/server/src/main/java/resources/galactic_messenger.trace.db
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
