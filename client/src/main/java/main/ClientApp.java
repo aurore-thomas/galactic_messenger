@@ -1,5 +1,7 @@
 package main;
 
+import lombok.Getter;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,17 +14,9 @@ import java.util.Base64;
 import java.util.Objects;
 
 public class ClientApp {
-    private static String url;
-    private static String ipServer;
-    private static String portServer;
+    @Getter
+    private static String url, ipServer, portServer;
 
-    public static String getUrl() {
-        return url;
-    }
-
-    public static String getIpServer() { return ipServer; }
-
-    public static String getPortServer() { return portServer; }
 
     public static void main(String[] args) throws IOException, InterruptedException {
         if (args.length != 2) {
@@ -36,7 +30,7 @@ public class ClientApp {
         } else {
             ipServer = args[0];
             portServer = args[1];
-            url = "http://" + getIpServer() + ":" + getPortServer() + "/api";
+            url = "http://" + ipServer + ":" + portServer + "/api";
 
             mainMenuClient();
         }
@@ -66,7 +60,7 @@ public class ClientApp {
         String[] argumentsInput = stringInput.split(" ");
 
         if (Objects.equals(argumentsInput[0], "/register") || Objects.equals(argumentsInput[0], "/login")) {
-            httpConnection(getIpServer(), getPortServer(), argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
+            httpConnection(ipServer, portServer, argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
         } else if (Objects.equals(argumentsInput[0], "/help")) {
             displayHelp();
         } else if (Objects.equals(argumentsInput[0], "/exit")) {
@@ -92,26 +86,42 @@ public class ClientApp {
                 """);
     }
 
-    public static void httpConnection(String ipServer, String portServer, String pageWanted, String username, String password) throws IOException, InterruptedException {
+    public static void httpConnection(String pageWanted, String username, String password) {
         try {
-            URL endpoint = new URL(getUrl() + pageWanted);
-            HttpURLConnection connection = (HttpURLConnection) endpoint.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", "application/json");
-            connection.setDoOutput(true);
-
-            String jsonInputString = "{\"username\": \"" + username + "\", \"password\": \"" + password + "\"}";
-
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
-                os.write(input, 0, input.length);
-            }
+            HttpURLConnection connection = getHttpURLConnection(pageWanted, username, password);
 
             int responseCode = connection.getResponseCode();
-            System.out.println("Response code: " + responseCode);
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuilder responseBody = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    responseBody.append(inputLine);
+                }
+                in.close();
+
+                System.out.println(responseBody);
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private static HttpURLConnection getHttpURLConnection(String pageWanted, String username, String password) throws IOException {
+        URL endpoint = new URL(url + pageWanted);
+        HttpURLConnection connection = (HttpURLConnection) endpoint.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setDoOutput(true);
+
+        String jsonInputString = "{\"username\": \"" + username + "\", \"password\": \"" + password + "\"}";
+
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
+        }
+        return connection;
     }
 
 
