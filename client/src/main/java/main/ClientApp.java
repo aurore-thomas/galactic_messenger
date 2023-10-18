@@ -1,10 +1,15 @@
 package main;
 
-import javax.security.sasl.SaslClient;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Arrays;
+import java.net.http.HttpRequest;
+import java.util.Base64;
 
 public class ClientApp {
     public static void main(String[] args) {
@@ -18,7 +23,7 @@ public class ClientApp {
             while (true) {
                 System.out.println("Enter a command : ");
                 String commandInput = reader.readLine();
-                if ("exit".equalsIgnoreCase(commandInput)) {
+                if ("/exit".equalsIgnoreCase(commandInput)) {
                     break;
                 } else {
                     analyzeStringInput(commandInput);
@@ -32,7 +37,7 @@ public class ClientApp {
 
     public static void analyzeStringInput(String stringInput) {
         String[] argumentsInput = stringInput.split(" ");
-        if (argumentsInput.length > 3) {
+        if (argumentsInput.length != 3) {
             System.out.println("Error, input message isn't correct !");
             displayHelp();
         } else {
@@ -61,20 +66,39 @@ public class ClientApp {
                     ->    /login [username] [password]
                 To display this menu : 
                     ->    /help
+                To exit : 
+                    ->    /exit 
                 ---------------------------
                 """);
     }
 
     public static void getResgisterInformations(String username, String password) {
         System.out.println("REGISTER TEST");
+        System.out.println("Username : " + username);
+        System.out.println("Password : " + password);
+        System.out.println("Hashed : " + hashPassword(password));
     }
 
     public static void getLoginInformation(String username, String password) {
         System.out.println("LOGIN TEST");
     }
 
-    public static String hashPassword(String passwordToHash) {
 
+    public static String hashPassword(String passwordToHash) {
+        // Hash
+        String hashedPassword = null;
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            byte[] hashList = messageDigest.digest(passwordToHash.getBytes(StandardCharsets.UTF_8));
+
+            // Convert to String
+            hashedPassword = Base64.getEncoder().encodeToString(hashList);
+
+        } catch (Exception e) {
+            System.out.printf("Error : " + e);
+        }
+
+        return hashedPassword;
     }
 
 }
