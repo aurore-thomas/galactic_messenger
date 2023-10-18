@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c4187b7b-25c4-46f4-9a45-ff71eee968c3" name="Changes" comment="[ADD] connectivity with db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/client/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/main/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/main/ClientApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,21 @@
       <recent name="C:\Users\remivm\Documents\galactic_messenger\server\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ClientApp">
+    <configuration name="ClientApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.ClientApp" />
+      <module name="galactic_messenger.client.main" />
+      <option name="PROGRAM_PARAMETERS" value="10.10.8.93 3000" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServerApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="galactic_messenger.server.main" />
       <option name="PROGRAM_PARAMETERS" value="3000" />

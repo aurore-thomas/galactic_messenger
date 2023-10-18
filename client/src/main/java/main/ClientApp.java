@@ -1,7 +1,6 @@
 package main;
 
 import lombok.Getter;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,7 +17,7 @@ public class ClientApp {
     private static String url, ipServer, portServer;
 
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) {
         if (args.length != 2) {
             System.out.print("""
                     --------------------------------------------------------------------------
@@ -60,7 +59,7 @@ public class ClientApp {
         String[] argumentsInput = stringInput.split(" ");
 
         if (Objects.equals(argumentsInput[0], "/register") || Objects.equals(argumentsInput[0], "/login")) {
-            httpConnection(ipServer, portServer, argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
+            httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
         } else if (Objects.equals(argumentsInput[0], "/help")) {
             displayHelp();
         } else if (Objects.equals(argumentsInput[0], "/exit")) {
