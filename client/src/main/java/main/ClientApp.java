@@ -17,12 +17,24 @@ public class ClientApp {
     @Getter
     private static String url, ipServer, portServer;
 
-    public static void main(String[] args) {
-        ipServer = args[0];
-        portServer = args[1];
-        url = "http://" + ipServer + ":" + portServer + "/api";
 
-        mainMenuClient();
+    public static void main(String[] args) throws IOException, InterruptedException {
+        if (args.length != 2) {
+            System.out.print("""
+                    --------------------------------------------------------------------------
+                    Error, please enter : 
+                        -> java -jar galactic_messenger_client.jar [IP address] [Server port]
+                    --------------------------------------------------------------------------
+                    """);
+            System.exit(0);
+        } else {
+            ipServer = args[0];
+            portServer = args[1];
+            url = "http://" + ipServer + ":" + portServer + "/api";
+
+            mainMenuClient();
+        }
+
     }
 
     public static void mainMenuClient() {
@@ -47,23 +59,21 @@ public class ClientApp {
     public static void analyzeStringInput(String stringInput) throws IOException, InterruptedException {
         String[] argumentsInput = stringInput.split(" ");
 
-        if (argumentsInput.length != 3) {
-            System.out.println("Error, input message isn't correct !");
+        if (Objects.equals(argumentsInput[0], "/register") || Objects.equals(argumentsInput[0], "/login")) {
+            httpConnection(ipServer, portServer, argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
+        } else if (Objects.equals(argumentsInput[0], "/help")) {
             displayHelp();
+        } else if (Objects.equals(argumentsInput[0], "/exit")) {
+            System.exit(0);
         } else {
-            if (Objects.equals(argumentsInput[0], "/register") || Objects.equals(argumentsInput[0], "/login")) {
-                httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
-            } else if (Objects.equals(argumentsInput[0], "/help")) {
-                displayHelp();
-            } else if (Objects.equals(argumentsInput[0], "/exit")) {
-                System.exit(0);
-            }
+            System.out.println("Error");
+            displayHelp();
         }
     }
 
     public static void displayHelp() { // TODO : Add STEP 2 3 4 5 6
         System.out.println("""
-                ---------------------------
+                --------------------------------------------------------------------------
                 To create an account : 
                     ->    /register [username] [password]
                 To login : 
@@ -72,7 +82,7 @@ public class ClientApp {
                     ->    /help
                 To exit : 
                     ->    /exit 
-                ---------------------------
+                --------------------------------------------------------------------------
                 """);
     }
 
