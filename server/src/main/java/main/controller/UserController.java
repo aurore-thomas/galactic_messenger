@@ -17,31 +17,31 @@ public class UserController {
     UserRepository userRepository;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user) {
+    public ResponseEntity register(@RequestBody User user) {
         try {
             if (userRepository.existsByUsername(user.getUsername())) {
-                return new ResponseEntity<>("Username already exists.", HttpStatus.BAD_REQUEST);
+                return ResponseEntity.ok("Username already exists.");
             }
             userRepository.save(user);
-            return new ResponseEntity<>("User registered successfully.", HttpStatus.OK);
+            return ResponseEntity.ok("User registered successfully.");
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody User user) {
+    public ResponseEntity login(@RequestBody User user) {
         try {
             if (!userRepository.existsByUsername(user.getUsername())) {
-                return new ResponseEntity<>("Username does not exist.", HttpStatus.BAD_REQUEST);
+                return ResponseEntity.ok("Username doesn't exist.");
             }
             User userFromDB = userRepository.findByUsername(user.getUsername());
             if (!userFromDB.getPassword().equals(user.getPassword())) {
-                return new ResponseEntity<>("Incorrect password.", HttpStatus.BAD_REQUEST);
+                return ResponseEntity.ok("Password is incorrect.");
             }
-            return new ResponseEntity<>("User logged in successfully.", HttpStatus.OK);
+            return ResponseEntity.ok("User logged in successfully.");
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
