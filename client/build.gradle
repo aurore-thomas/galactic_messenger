@@ -17,7 +17,7 @@ test {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'ClientApp'
+        attributes 'Main-Class': 'main.ClientApp'
     }
     from sourceSets.main.output
     archiveBaseName = 'galactic_messenger_client'
