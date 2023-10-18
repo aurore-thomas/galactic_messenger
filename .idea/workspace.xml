@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4187b7b-25c4-46f4-9a45-ff71eee968c3" name="Changes" comment="[ADD] connectivity with db">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/ServerApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/main/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +31,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -50,7 +53,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/step1-port",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "20",
     "node.js.detected.package.eslint": "true",
@@ -73,6 +76,7 @@
   <component name="RunManager">
     <configuration name="ServerApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="galactic_messenger.server.main" />
+      <option name="PROGRAM_PARAMETERS" value="3000" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="main.ServerApp" />
       <method v="2">
         <option name="Make" enabled="true" />
