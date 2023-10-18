@@ -3,16 +3,20 @@ package main;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.Arrays;
-import java.net.http.HttpRequest;
 import java.util.Base64;
 
+import static java.lang.System.exit;
+
 public class ClientApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        String ipServer = args[0];
+        String portServer = args[1];
         mainMenuClient();
     }
 
@@ -83,6 +87,25 @@ public class ClientApp {
         System.out.println("LOGIN TEST");
     }
 
+    public static void httpConnection(String ipServer, String portServer) throws IOException, InterruptedException {
+        String url = "http://" + ipServer + ":" + portServer;
+        System.out.println(url);
+        var client = HttpClient.newHttpClient();
+
+        var request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 200) {
+            String responseBody = response.body();
+            System.out.println(responseBody);
+        } else {
+            System.out.println("La requête a échoué avec le code de réponse : " + response.statusCode());
+            System.exit(0);
+        }
+    }
 
     public static String hashPassword(String passwordToHash) {
         // Hash
