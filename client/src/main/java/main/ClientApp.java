@@ -20,20 +20,19 @@ public class ClientApp {
     public static void main(String[] args) {
         if (args.length != 2) {
             System.out.print("""
-                    --------------------------------------------------------------------------
-                    Error, please enter : 
-                        -> java -jar galactic_messenger_client.jar [IP address] [Server port]
-                    --------------------------------------------------------------------------
-                    """);
+                --------------------------------------------------------------------------
+                Error, please enter :                     
+                    -> java -jar galactic_messenger_client.jar [IP address] [Server port]
+                --------------------------------------------------------------------------
+                """);
             System.exit(0);
-        } else {
-            ipServer = args[0];
-            portServer = args[1];
-            url = "http://" + ipServer + ":" + portServer + "/api";
-
-            mainMenuClient();
         }
 
+        ipServer = args[0];
+        portServer = args[1];
+        url = "http://" + ipServer + ":" + portServer + "/api";
+
+        mainMenuClient();
     }
 
     public static void mainMenuClient() {
@@ -125,7 +124,6 @@ public class ClientApp {
 
 
     public static String hashPassword(String passwordToHash) {
-        // Hash
         String hashedPassword = null;
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
