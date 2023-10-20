@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4187b7b-25c4-46f4-9a45-ff71eee968c3" name="Changes" comment="[FIX] qol server main app">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c4187b7b-25c4-46f4-9a45-ff71eee968c3" name="Changes" comment="[ADD] active users server-side">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/client/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/main/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/main/ClientApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/PasswordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/ActiveUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/controller/ActiveUsers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/model/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1697539593044</updated>
       <workItem from="1697539593385" duration="1062000" />
-      <workItem from="1697721492833" duration="7902000" />
+      <workItem from="1697721492833" duration="15105000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] connectivity with db">
       <option name="closed" value="true" />
@@ -138,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697724233588</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[ADD] active users server-side">
+      <option name="closed" value="true" />
+      <created>1697785347710</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697785347710</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +156,7 @@
     <MESSAGE value="[ADD] connectivity with db" />
     <MESSAGE value="[FIX] dupe dependency" />
     <MESSAGE value="[FIX] qol server main app" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIX] qol server main app" />
+    <MESSAGE value="[ADD] active users server-side" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] active users server-side" />
   </component>
 </project>

@@ -57,8 +57,11 @@ public class ClientApp {
     public static void analyzeStringInput(String stringInput) throws IOException, InterruptedException {
         String[] argumentsInput = stringInput.split(" ");
 
-        if (Objects.equals(argumentsInput[0], "/register") || Objects.equals(argumentsInput[0], "/login")) {
+        if (Objects.equals(argumentsInput[0], "/register") && argumentsInput.length == 3) {
             httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
+        } else if (Objects.equals(argumentsInput[0], "/login") && argumentsInput.length == 3) {
+            httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
+            // sockets requete créer stomp session
         } else if (Objects.equals(argumentsInput[0], "/help")) {
             displayHelp();
         } else if (Objects.equals(argumentsInput[0], "/exit")) {

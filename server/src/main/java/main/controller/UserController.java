@@ -35,11 +35,11 @@ public class UserController {
             if (!userRepository.existsByUsername(user.getUsername())) {
                 return ResponseEntity.ok("Username doesn't exist.");
             }
-            User userFromDB = userRepository.findByUsername(user.getUsername());
-            if (!userFromDB.getPassword().equals(user.getPassword())) {
+            User registeredUser = userRepository.findByUsername(user.getUsername());
+            if (!registeredUser.getPassword().equals(user.getPassword())) {
                 return ResponseEntity.ok("Password is incorrect.");
             }
-            ActiveUsers.addUser(user);
+            ActiveUsers.addUser(user.getUsername());
             return ResponseEntity.ok("User logged in successfully.");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
