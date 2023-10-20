@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4187b7b-25c4-46f4-9a45-ff71eee968c3" name="Changes" comment="[FIX] dupe dependency">
+    <list default="true" id="c4187b7b-25c4-46f4-9a45-ff71eee968c3" name="Changes" comment="[FIX] qol server main app">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/main/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/main/ClientApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/ServerApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/PasswordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/model/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +79,7 @@
     <configuration name="ClientApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.ClientApp" />
       <module name="galactic_messenger.client.main" />
-      <option name="PROGRAM_PARAMETERS" value="192.168.1.20 3000" />
+      <option name="PROGRAM_PARAMETERS" value="10.10.2.254 3000" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.*" />
@@ -110,7 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1697539593044</updated>
       <workItem from="1697539593385" duration="1062000" />
-      <workItem from="1697721492833" duration="2671000" />
+      <workItem from="1697721492833" duration="7902000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] connectivity with db">
       <option name="closed" value="true" />
@@ -128,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697721683319</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="[FIX] qol server main app">
+      <option name="closed" value="true" />
+      <created>1697724233587</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697724233588</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +147,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[ADD] connectivity with db" />
     <MESSAGE value="[FIX] dupe dependency" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIX] dupe dependency" />
+    <MESSAGE value="[FIX] qol server main app" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIX] qol server main app" />
   </component>
 </project>

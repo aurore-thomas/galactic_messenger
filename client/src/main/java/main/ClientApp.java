@@ -129,13 +129,11 @@ public class ClientApp {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             byte[] hashList = messageDigest.digest(passwordToHash.getBytes(StandardCharsets.UTF_8));
 
-            // Convert to String
             hashedPassword = Base64.getEncoder().encodeToString(hashList);
 
         } catch (Exception e) {
             System.out.printf("Error : " + e);
         }
-
         return hashedPassword;
     }
 }

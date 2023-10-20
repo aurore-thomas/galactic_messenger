@@ -39,6 +39,7 @@ public class UserController {
             if (!userFromDB.getPassword().equals(user.getPassword())) {
                 return ResponseEntity.ok("Password is incorrect.");
             }
+            ActiveUsers.addUser(user);
             return ResponseEntity.ok("User logged in successfully.");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
