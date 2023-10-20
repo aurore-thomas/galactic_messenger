@@ -20,20 +20,19 @@ public class ClientApp {
     public static void main(String[] args) {
         if (args.length != 2) {
             System.out.print("""
-                    --------------------------------------------------------------------------
-                    Error, please enter : 
-                        -> java -jar galactic_messenger_client.jar [IP address] [Server port]
-                    --------------------------------------------------------------------------
-                    """);
+                --------------------------------------------------------------------------
+                Error, please enter :                     
+                    -> java -jar galactic_messenger_client.jar [IP address] [Server port]
+                --------------------------------------------------------------------------
+                """);
             System.exit(0);
-        } else {
-            ipServer = args[0];
-            portServer = args[1];
-            url = "http://" + ipServer + ":" + portServer + "/api";
-
-            mainMenuClient();
         }
 
+        ipServer = args[0];
+        portServer = args[1];
+        url = "http://" + ipServer + ":" + portServer + "/api";
+
+        mainMenuClient();
     }
 
     public static void mainMenuClient() {
@@ -58,8 +57,11 @@ public class ClientApp {
     public static void analyzeStringInput(String stringInput) throws IOException, InterruptedException {
         String[] argumentsInput = stringInput.split(" ");
 
-        if (Objects.equals(argumentsInput[0], "/register") || Objects.equals(argumentsInput[0], "/login")) {
+        if (Objects.equals(argumentsInput[0], "/register") && argumentsInput.length == 3) {
             httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
+        } else if (Objects.equals(argumentsInput[0], "/login") && argumentsInput.length == 3) {
+            httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
+            // sockets requete créer stomp session
         } else if (Objects.equals(argumentsInput[0], "/help")) {
             displayHelp();
         } else if (Objects.equals(argumentsInput[0], "/exit")) {
@@ -125,19 +127,16 @@ public class ClientApp {
 
 
     public static String hashPassword(String passwordToHash) {
-        // Hash
         String hashedPassword = null;
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             byte[] hashList = messageDigest.digest(passwordToHash.getBytes(StandardCharsets.UTF_8));
 
-            // Convert to String
             hashedPassword = Base64.getEncoder().encodeToString(hashList);
 
         } catch (Exception e) {
             System.out.printf("Error : " + e);
         }
-
         return hashedPassword;
     }
 }

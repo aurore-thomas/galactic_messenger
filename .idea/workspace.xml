@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4187b7b-25c4-46f4-9a45-ff71eee968c3" name="Changes" comment="[ADD] connectivity with db">
+    <list default="true" id="c4187b7b-25c4-46f4-9a45-ff71eee968c3" name="Changes" comment="[ADD] active users server-side">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/client/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/main/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/main/ClientApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/ActiveUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/controller/ActiveUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/controller/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,30 +45,31 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.23577236&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feature/sockets",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "20",
+    "last_opened_file_path": "C:/Users/remivm/Documents/galactic_messenger",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.23577236",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\remivm\Documents\galactic_messenger\server\src\main\resources" />
@@ -75,7 +79,7 @@
     <configuration name="ClientApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.ClientApp" />
       <module name="galactic_messenger.client.main" />
-      <option name="PROGRAM_PARAMETERS" value="10.10.8.93 3000" />
+      <option name="PROGRAM_PARAMETERS" value="10.10.2.254 3000" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.*" />
@@ -94,6 +98,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.ClientApp" />
+      <item itemvalue="Spring Boot.ServerApp" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -104,6 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1697539593044</updated>
       <workItem from="1697539593385" duration="1062000" />
+      <workItem from="1697721492833" duration="15105000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] connectivity with db">
       <option name="closed" value="true" />
@@ -113,7 +122,31 @@
       <option name="project" value="LOCAL" />
       <updated>1697545614010</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[FIX] dupe dependency">
+      <option name="closed" value="true" />
+      <created>1697721683319</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697721683319</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[FIX] qol server main app">
+      <option name="closed" value="true" />
+      <created>1697724233587</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697724233588</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[ADD] active users server-side">
+      <option name="closed" value="true" />
+      <created>1697785347710</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697785347710</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +154,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[ADD] connectivity with db" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] connectivity with db" />
+    <MESSAGE value="[FIX] dupe dependency" />
+    <MESSAGE value="[FIX] qol server main app" />
+    <MESSAGE value="[ADD] active users server-side" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] active users server-side" />
   </component>
 </project>

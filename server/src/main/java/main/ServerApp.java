@@ -11,16 +11,22 @@ public class ServerApp {
 
     public static void main(String[] args) throws UnknownHostException {
 
-        if (args.length > 0) {
-            System.setProperty("server.port", String.valueOf(Integer.parseInt(args[0])));
+        if (args.length != 1) {
+            System.out.println("""
+                --------------------------------------------------------------------------
+                Error, please enter :                    
+                    -> java -jar galactic_messenger_server.jar [Server port]
+                --------------------------------------------------------------------------
+                """);
+            System.exit(0);
         }
 
+        System.setProperty("server.port", String.valueOf(Integer.parseInt(args[0])));
         int port = Integer.parseInt(System.getProperty("server.port"));
 
         SpringApplication.run(ServerApp.class, args);
         InetAddress inetAddress = InetAddress.getLocalHost();
         String ipAddress = inetAddress.getHostAddress();
         System.out.println("\nServer available at: " + ipAddress + ":" + port);
-        System.out.println("H2 Console access : http://localhost:" + port + "/h2");
     }
 }
