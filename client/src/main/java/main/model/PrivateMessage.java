@@ -9,16 +9,16 @@ import lombok.Setter;
 @Getter
 public class PrivateMessage {
     @Setter
-    private String sender, content, recipient;
+    private String sender, content, receiver;
 
     @JsonCreator
     public PrivateMessage(
             @JsonProperty("sender") String sender,
-            @JsonProperty("recipient") String recipient,
+            @JsonProperty("receiver") String receiver,
             @JsonProperty("content") String content
     ) {
         this.sender = sender;
-        this.recipient = recipient;
+        this.receiver = receiver;
         this.content = content;
     }
 
@@ -27,27 +27,12 @@ public class PrivateMessage {
         this.content = content;
     }
 
-    public String getSender() {
-        return sender;
-    }
+    // Getter & Setter
+    public String getSender() { return sender; }
+    public String getContent() { return content; }
+    public String getReceiver() { return receiver; }
 
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getRecipient() {
-        return recipient;
-    }
-
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
-    }
+    public void setSender(String sender) { this.sender = sender; }
+    public void setContent(String content) { this.content = content; }
+    public void setReceiver(String receiver) { this.receiver = receiver; }
 }
