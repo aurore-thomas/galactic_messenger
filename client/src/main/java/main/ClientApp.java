@@ -1,6 +1,8 @@
 package main;
 
 import lombok.Getter;
+import main.websocket.ClientConnection;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,7 +17,6 @@ import java.util.Objects;
 public class ClientApp {
     @Getter
     private static String url, ipServer, portServer;
-
 
     public static void main(String[] args) {
         if (args.length != 2) {
@@ -60,8 +61,9 @@ public class ClientApp {
         if (Objects.equals(argumentsInput[0], "/register") && argumentsInput.length == 3) {
             httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
         } else if (Objects.equals(argumentsInput[0], "/login") && argumentsInput.length == 3) {
-            httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
-            // sockets requete créer stomp session
+            if (httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]))) {
+                createSocketConnection();
+            }
         } else if (Objects.equals(argumentsInput[0], "/help")) {
             displayHelp();
         } else if (Objects.equals(argumentsInput[0], "/exit")) {
@@ -87,7 +89,7 @@ public class ClientApp {
                 """);
     }
 
-    public static void httpConnection(String pageWanted, String username, String password) {
+    public static boolean httpConnection(String pageWanted, String username, String password) {
         try {
             HttpURLConnection connection = getHttpURLConnection(pageWanted, username, password);
 
@@ -103,10 +105,12 @@ public class ClientApp {
                 in.close();
 
                 System.out.println(responseBody);
+                return true;
             }
         } catch (Exception e) {
             System.out.println(e);
         }
+        return false;
     }
 
     private static HttpURLConnection getHttpURLConnection(String pageWanted, String username, String password) throws IOException {
@@ -125,7 +129,6 @@ public class ClientApp {
         return connection;
     }
 
-
     public static String hashPassword(String passwordToHash) {
         String hashedPassword = null;
         try {
@@ -138,5 +141,14 @@ public class ClientApp {
             System.out.printf("Error : " + e);
         }
         return hashedPassword;
+    }
+
+    private static void createSocketConnection() {
+        try {
+            ClientConnection newConnection = new ClientConnection();
+            newConnection.connect();
+        } catch (Exception e) {
+            System.out.println("Error : " + e);
+        }
     }
 }

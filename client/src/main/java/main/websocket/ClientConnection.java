@@ -17,15 +17,11 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class ClientConnection {
+    // To read and write into JSON files
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate(); // deprecated
 
-    public static void main(String[] args) {
-        ClientConnection cc = new ClientConnection();
-        cc.connect();
-    }
-
-    private void connect() {
+    public void connect() {
         WebSocketStompClient stompClient = new WebSocketStompClient(new SockJsClient(
                 Collections.singletonList(new WebSocketTransport(new StandardWebSocketClient()))));
 
