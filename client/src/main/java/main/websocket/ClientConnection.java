@@ -20,21 +20,23 @@ public class ClientConnection {
     // To read and write into JSON files
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final RestTemplate restTemplate = new RestTemplate(); // deprecated
-    private String portServer, username;
+    private String portServer, username, ipServer;
 
-    public ClientConnection(String portServer, String username) {
+    public ClientConnection(String ipServer, String portServer, String username) {
         this.portServer = portServer;
         this.username = username;
+        this.ipServer = ipServer;
     }
 
     public void connect() {
+        String urlWebSocket = "ws://" + ipServer + ":" + portServer + "/ws";
         WebSocketStompClient stompClient = new WebSocketStompClient(new SockJsClient(
                 Collections.singletonList(new WebSocketTransport(new StandardWebSocketClient()))));
 
         StompSessionHandler sessionHandler = new MyStompSessionHandler();
         StompSession stompSession;
         try{
-            stompSession = stompClient.connectAsync("ws://localhost:3000/ws", sessionHandler).get();
+            stompSession = stompClient.connectAsync(urlWebSocket, sessionHandler).get();
             stompSession.subscribe("/topic/messages", new MyStompSessionHandler(){
                 @Override
                 public Type getPayloadType(StompHeaders headers) {

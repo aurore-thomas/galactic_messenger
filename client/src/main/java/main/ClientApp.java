@@ -60,7 +60,7 @@ public class ClientApp {
             httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
         } else if (Objects.equals(argumentsInput[0], "/login") && argumentsInput.length == 3) {
             if (httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]))) {
-                createSocketConnection(portServer, argumentsInput[1]);
+                createSocketConnection(ipServer, portServer, argumentsInput[1]);
             }
         } else if (Objects.equals(argumentsInput[0], "/help")) {
             displayHelp();
@@ -100,7 +100,7 @@ public class ClientApp {
                 while ((inputLine = in.readLine()) != null) {
                     responseBody.append(inputLine);
                 }
-                in.close();
+//                in.close();
 
                 System.out.println(responseBody);
                 return true;
@@ -141,9 +141,9 @@ public class ClientApp {
         return hashedPassword;
     }
 
-    private static void createSocketConnection(String portServer, String username) {
+    private static void createSocketConnection(String ipServer, String portServer, String username) {
         try {
-            ClientConnection newConnection = new ClientConnection(portServer, username);
+            ClientConnection newConnection = new ClientConnection(ipServer, portServer, username);
             newConnection.connect();
         } catch (Exception e) {
             System.out.println("Error : " + e);
