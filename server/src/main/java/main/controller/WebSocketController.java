@@ -21,15 +21,15 @@ public class WebSocketController {
     public String sendMessage(PrivateMessage message) {
 //        String sender = message.getSender();
 //        if (ActiveUsers.isUserActive(sender)) {
-//            String recipient = message.getRecipient();
-//            String destination = "/topic/messages/" + recipient;
+//            String receiver = message.getreceiver();
+//            String destination = "/topic/messages/" + receiver;
 //
-//            if (ActiveUsers.isUserActive(recipient)) {
-//                System.out.println("Sent message: " + message.getContent() + " from " + sender + " to " + recipient);
+//            if (ActiveUsers.isUserActive(receiver)) {
+//                System.out.println("Sent message: " + message.getContent() + " from " + sender + " to " + receiver);
 //                return "Message sent.";
 //            } else {
-//                System.out.println("User " + recipient + " is not active.");
-//                return "User " + recipient + " is not active.";
+//                System.out.println("User " + receiver + " is not active.");
+//                return "User " + receiver + " is not active.";
 //            }
 //        } else {
 //            System.out.println("User " + sender + " is not active.");

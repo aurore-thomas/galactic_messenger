@@ -3,10 +3,7 @@ package main;
 import lombok.Getter;
 import main.websocket.ClientConnection;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -15,6 +12,7 @@ import java.util.Base64;
 import java.util.Objects;
 
 public class ClientApp {
+
     @Getter
     private static String url, ipServer, portServer;
 
@@ -62,7 +60,7 @@ public class ClientApp {
             httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]));
         } else if (Objects.equals(argumentsInput[0], "/login") && argumentsInput.length == 3) {
             if (httpConnection(argumentsInput[0], argumentsInput[1], hashPassword(argumentsInput[2]))) {
-                createSocketConnection();
+                createSocketConnection(portServer, argumentsInput[1]);
             }
         } else if (Objects.equals(argumentsInput[0], "/help")) {
             displayHelp();
@@ -143,9 +141,9 @@ public class ClientApp {
         return hashedPassword;
     }
 
-    private static void createSocketConnection() {
+    private static void createSocketConnection(String portServer, String username) {
         try {
-            ClientConnection newConnection = new ClientConnection();
+            ClientConnection newConnection = new ClientConnection(portServer, username);
             newConnection.connect();
         } catch (Exception e) {
             System.out.println("Error : " + e);

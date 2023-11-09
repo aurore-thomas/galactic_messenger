@@ -20,6 +20,12 @@ public class ClientConnection {
     // To read and write into JSON files
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final RestTemplate restTemplate = new RestTemplate(); // deprecated
+    private String portServer, username;
+
+    public ClientConnection(String portServer, String username) {
+        this.portServer = portServer;
+        this.username = username;
+    }
 
     public void connect() {
         WebSocketStompClient stompClient = new WebSocketStompClient(new SockJsClient(
@@ -45,15 +51,15 @@ public class ClientConnection {
             });
             Scanner scanner = new Scanner(System.in);
             while (true) {
-                String recipient;
+                String receiver;
                 System.out.println("Enter a message to send (or type 'exit' to quit): ");
                 String input = scanner.nextLine();
-                System.out.println("Enter the recipient: ");
-                recipient = scanner.nextLine();
+                System.out.println("Enter the receiver: ");
+                receiver = scanner.nextLine();
                 if (input.equalsIgnoreCase("exit")) {
                     break;
                 }
-                PrivateMessage message = new PrivateMessage("username", recipient, input);
+                PrivateMessage message = new PrivateMessage(username, receiver, input);
                 byte[] messageBytes = serializeMessage(message);
                 stompSession.send("/app/sendMessage", messageBytes);
             }
@@ -88,4 +94,6 @@ public class ClientConnection {
             return new PrivateMessage("", "", "");
         }
     }
+
+
 }

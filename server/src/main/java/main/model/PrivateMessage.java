@@ -9,16 +9,16 @@ import lombok.Setter;
 @Getter
 public class PrivateMessage {
     @Setter
-    private String sender, content, recipient;
+    private String sender, content, receiver;
 
     @JsonCreator
     public PrivateMessage(
             @JsonProperty("sender") String sender,
-            @JsonProperty("recipient") String recipient,
+            @JsonProperty("receiver") String receiver,
             @JsonProperty("content") String content
     ) {
         this.sender = sender;
-        this.recipient = recipient;
+        this.receiver = receiver;
         this.content = content;
     }
 
