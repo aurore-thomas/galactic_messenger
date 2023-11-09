@@ -20,7 +20,7 @@ public class UserController {
     public ResponseEntity register(@RequestBody User user) {
         try {
             if (userRepository.existsByUsername(user.getUsername())) {
-                return ResponseEntity.ok("Username already exists.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username already exists.");
             }
             userRepository.save(user);
             return ResponseEntity.ok("User registered successfully.");
@@ -33,11 +33,11 @@ public class UserController {
     public ResponseEntity login(@RequestBody User user) {
         try {
             if (!userRepository.existsByUsername(user.getUsername())) {
-                return ResponseEntity.ok("Username doesn't exist.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username does not exist.");
             }
             User registeredUser = userRepository.findByUsername(user.getUsername());
             if (!registeredUser.getPassword().equals(user.getPassword())) {
-                return ResponseEntity.ok("Password is incorrect.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong password.");
             }
             ActiveUsers.addUser(user.getUsername());
             return ResponseEntity.ok("User logged in successfully.");

@@ -90,19 +90,23 @@ public class ClientApp {
     public static boolean httpConnection(String pageWanted, String username, String password) {
         try {
             HttpURLConnection connection = getHttpURLConnection(pageWanted, username, password);
-
             int responseCode = connection.getResponseCode();
+            BufferedReader in;
+
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String inputLine;
-                StringBuilder responseBody = new StringBuilder();
+                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            } else {
+                in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+            }
+            String inputLine;
+            StringBuilder responseBody = new StringBuilder();
 
-                while ((inputLine = in.readLine()) != null) {
-                    responseBody.append(inputLine);
-                }
-//                in.close();
-
-                System.out.println(responseBody);
+            while ((inputLine = in.readLine()) != null) {
+                responseBody.append(inputLine);
+            }
+            in.close();
+            System.out.println(responseBody);
+            if (responseCode == HttpURLConnection.HTTP_OK) {
                 return true;
             }
         } catch (Exception e) {
@@ -132,9 +136,7 @@ public class ClientApp {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             byte[] hashList = messageDigest.digest(passwordToHash.getBytes(StandardCharsets.UTF_8));
-
             hashedPassword = Base64.getEncoder().encodeToString(hashList);
-
         } catch (Exception e) {
             System.out.printf("Error : " + e);
         }
