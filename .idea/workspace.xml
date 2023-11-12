@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4187b7b-25c4-46f4-9a45-ff71eee968c3" name="Changes" comment="[ADD] active users server-side">
+    <list default="true" id="c4187b7b-25c4-46f4-9a45-ff71eee968c3" name="Changes" comment="[FIX] websockets aren't started anymore if wrong login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/client/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/main/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/main/ClientApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/main/model/PrivateMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/main/model/PrivateMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/main/websocket/ClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/main/websocket/ClientConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/ActiveUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/controller/ActiveUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/controller/WebSocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/controller/WebSocketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/main/model/PrivateMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/main/model/PrivateMessage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +32,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/chat-one-to-one" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
@@ -45,41 +52,41 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/sockets",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "20",
-    "last_opened_file_path": "C:/Users/remivm/Documents/galactic_messenger",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.23577236",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/server-dm&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/remivm/Documents/galactic_messenger&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.23577236&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\remivm\Documents\galactic_messenger\server\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientApp">
-    <configuration name="ClientApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.ServerApp">
+    <configuration name="ClientApp" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.ClientApp" />
       <module name="galactic_messenger.client.main" />
-      <option name="PROGRAM_PARAMETERS" value="10.10.2.254 3000" />
+      <option name="PROGRAM_PARAMETERS" value="10.10.28.192 3000" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.*" />
@@ -113,6 +120,8 @@
       <updated>1697539593044</updated>
       <workItem from="1697539593385" duration="1062000" />
       <workItem from="1697721492833" duration="15105000" />
+      <workItem from="1699809422547" duration="36000" />
+      <workItem from="1699809500806" duration="2170000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] connectivity with db">
       <option name="closed" value="true" />
@@ -146,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697785347710</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[FIX] websockets aren't started anymore if wrong login">
+      <option name="closed" value="true" />
+      <created>1699535943453</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699535943453</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +174,12 @@
     <MESSAGE value="[FIX] dupe dependency" />
     <MESSAGE value="[FIX] qol server main app" />
     <MESSAGE value="[ADD] active users server-side" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] active users server-side" />
+    <MESSAGE value="[FIX] websockets aren't started anymore if wrong login" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIX] websockets aren't started anymore if wrong login" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/galactic_messenger$ClientApp.ic" NAME="ClientApp Coverage Results" MODIFIED="1699519213636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>main.*</FILTER>
+    </SUITE>
   </component>
 </project>
